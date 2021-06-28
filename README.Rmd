@@ -37,16 +37,19 @@ For small datasets with continuous values, function `radialvis3d` can be applied
 
 ```{r}
 library(radviz3d)
-data("iris")
-radialvis3d(data = iris[, -5], cl = factor(iris$Species), domrp = F, doGtrans = F, 
-            lwd = 2, alpha = 0.05, pradius = 0.025, class.labels = levels(iris$Species))
+library(MASS)
+data("crabs")
+crabs$group = as.factor(crabs$sp:crabs$sex)
+df = crabs[,4:9]
+radialvis3d(data = df[,-6], cl = factor(df$group), domrp = F, doGtrans = F, lwd = 2, 
+alpha = 0.025, pradius = 0.02, color = cb.palette, class.labels = NULL)
 ```
 ```{r echo=FALSE}
 # rgl::rgl.viewpoint(zoom = 0.85)
 # rgl::rglwidget()
 ```
 
-![RadViz3D for Iris data](man/figure/README/iris.png)
+![RadViz3D for Crabs data](man/figure/README/iris.png)
 
 ### Display reduced datasets 
 
